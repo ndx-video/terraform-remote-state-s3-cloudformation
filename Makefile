@@ -7,7 +7,7 @@ ok_color                  := \033[32;01m
 .PHONY: deploy-policy
 deploy-policy: $(workspace)
 	@echo "\n$(ok_color)====> Deploying Terraform state managed policy stack$(no_color)"
-	aws cloudformation deploy \
+	op plugin run -- aws cloudformation deploy \
 		--stack-name $(stack_managed_policy_name) \
 		--template-file stack-managed-policy.template \
 		--capabilities CAPABILITY_NAMED_IAM \
@@ -17,7 +17,7 @@ deploy-policy: $(workspace)
 .PHONY: deploy
 deploy: $(workspace)
 	@echo "\n$(ok_color)====> Deploying Terraform remote state stack$(no_color)"
-	aws cloudformation deploy \
+	op plugin run -- aws cloudformation deploy \
 		--stack-name $(stack_name) \
 		--template-file stack.template \
 		--region $(stack_region) \

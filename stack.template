@@ -19,8 +19,8 @@ Resources:
         Status: Enabled
       BucketEncryption:
         ServerSideEncryptionConfiguration:
-        - ServerSideEncryptionByDefault:
-            SSEAlgorithm: aws:kms
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: aws:kms
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true
@@ -32,11 +32,11 @@ Resources:
     Properties:
       TableName: !Ref LockTableName
       AttributeDefinitions:
-      - AttributeName: LockID
-        AttributeType: S
+        - AttributeName: LockID
+          AttributeType: S
       KeySchema:
-      - AttributeName: LockID
-        KeyType: HASH
+        - AttributeName: LockID
+          KeyType: HASH
       BillingMode: PROVISIONED
       ProvisionedThroughput:
         ReadCapacityUnits: 1
